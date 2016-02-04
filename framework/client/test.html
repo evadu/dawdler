@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script type="text/javascript" src="dawdler.js"></script>
+<script type="text/javascript" src="template.js"></script>
+<body>
+<p><dawdler dawdler_id='dawdler_test' dawdler_Click >这只是为了测试</dawdler></p>
+<p><dawdler dawdler_id='dawdler_test1' dawdler_Click="testFun(1111);" >我是一个自定义单击</dawdler></p>
+<p><dawdler dawdler_id='dawdler_test1' dawdler_dbClick="testDbFun()" >我只有双击</dawdler></p>
+<p><dawdler dawdler_id='dawdler_test1' dawdler_Click="testFun(1111);" dawdler_dbClick >双击我是默认</dawdler></p>
+<p><dawdler dawdler_id='dawdler_test1' dawdler_Click="testFun(1111);" dawdler_dbClick="testDbFun()" >双击我自定义</dawdler></p>
+<p><dawdler dawdler_id='dawdler_test2' dawdler_mouseOver dawdler_mouseOut="aaa()" dawdler_mouseUp >我没有事件</dawdler></p>
+</body>
+<script type="text/javascript" >
+    window.onload=function(){//加载完了，开始
+        var tVo=Template.getInstance();
+        tVo.initView();
+        tVo.addEvent();
+        tVo.release();
+    }
+    dawdler=Dawdler.getInstance();
+    dawdler.addEventListener("dawdler_Click", function (evt) {
+        alert("这是Dawdler的默认点击事件");
+    });
+    dawdler.addEventListener("dawdler_dbClick", function (evt) {
+        alert("这是默认的双击事件");
+    })
+    function testFun(num){
+        alert("我是自定义的"+num);
+    }
+    function testDbFun(){
+        alert("点我做嘛");
+    }
+    function aaa(){
+        alert("我去@!");
+    }
+</script>
+</html>

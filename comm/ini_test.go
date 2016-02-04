@@ -14,3 +14,10 @@ func TestReadIni(t *testing.T) {
 func TestTrim(t *testing.T) {
 	fmt.Println(string(Trim([]byte("   Hello World  "))),"_我去_","   Hello World  ")
 }
+type Tes struct{
+	name string
+}
+func TestStruct2Map(t *testing.T){
+	mymap:=map[string]string{"aaa":"bbb","bbb":"aaa"};
+	Struct2Map(mymap);
+}
